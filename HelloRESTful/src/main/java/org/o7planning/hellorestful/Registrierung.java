@@ -46,8 +46,8 @@ public class Registrierung{
 
     /* 
     Rest verbindung
-    Bekommt die eingegebenen Registrieungsdaten von der UI via Rest in JSON Format übergeben
-    Übergibt das empfangene JSON Objekt an jsonEntpacken()
+    Bekommt die eingegebenen Registrieungsdaten von der UI via Rest in JSON Format Ã¼bergeben
+    Ãœbergibt das empfangene JSON Objekt an jsonEntpacken()
      */
    
     
@@ -82,11 +82,11 @@ public class Registrierung{
     }
 
     /*
-    * Fügt eine neue Registrieung in die Registrierungs Datenbank
-    * Bekommt ein Registrierungs Objekt übergeben
-    * @ nickname enthält den Benutzernamen
-    * @ password enthält das Passwort
-    * @ email enthält die email des Benutzers
+    * FÃ¼gt eine neue Registrieung in die Registrierungs Datenbank
+    * Bekommt ein Registrierungs Objekt Ã¼bergeben
+    * @ nickname enthÃ¤lt den Benutzernamen
+    * @ password enthÃ¤lt das Passwort
+    * @ email enthÃ¤lt die email des Benutzers
     */ 
     public void registrierungInDBAnlegen(Registrierung reg)throws SQLException{
         String insertTableSQL = "INSERT INTO registrierung (nickname, password, email) VALUES (?,?,?)";
@@ -128,62 +128,6 @@ public class Registrierung{
 			}
 		}
     }
-    
-    /*
-     * Fügt ein neues Registrierungsobjekt in die Login Datenbank ein mit den Atributen 
-     * @ nickname enthält den Benutzernamen
-     * @ password enthält das Passwort
-     * @ eingeloggt gibt an ob der nutzer bereits eingeloggt ist
-     */
-    
-    public void loginInDBAnlegen(Registrierung reg)throws SQLException{
-        String insertTableSQL = "INSERT INTO login (nickname, password, eingeloggt) VALUES (?,?,?)";
-     	String selectTableSQL = "SELECT MAX(id) as id FROM login";
-
-        try {
-            dbConnection = DBConnection.getDBConnection();
-
-            preparedStatement = dbConnection.prepareStatement(insertTableSQL);
-            preparedStatement.setString (1, reg.nickname);
-            preparedStatement.setString (2, reg.password);
-            preparedStatement.setInt (3, reg.eingeloggt);
-            preparedStatement.executeUpdate();
-
-            preparedStatement = dbConnection.prepareStatement(selectTableSQL);
-			ResultSet rs1 = preparedStatement.executeQuery();
-			 
-			 while(rs1.next()){
-		         //Retrieve by column name
-				 this.id  = rs1.getInt("id");
-
-		         //Display values
-		         System.out.print("ID: " + this.id);
-
-		      }
-	
-			System.out.println("Record is inserted into DBUSER table!"); 
-
-            
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-			if (preparedStatement != null) {
-				preparedStatement.close();
-			}
-	
-			if (dbConnection != null) {
-				dbConnection.close();
-			}
-		}
-    }
-    
-    
-    
-    
-    
-    
-    
-    
     
 
     public static void main(String[] args) throws SQLException {

@@ -76,7 +76,7 @@ public class Registrierung{
         reg.eingeloggt = 0;
         
         registrierungInDBAnlegen(reg);
-        loginInDBAnlegen(reg);
+        
         
         
     }

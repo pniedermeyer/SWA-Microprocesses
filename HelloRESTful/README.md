@@ -18,9 +18,5 @@ Datenbank Register enthält die Spalten:
   - email 
   - id
   
-  Datenbank login enthält die Spalten:
-  - nickname
-  - password
-  - eingeloggt
-  - id
+
   

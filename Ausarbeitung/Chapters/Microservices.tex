@@ -15,7 +15,7 @@ Man sieht, das es keine standardisierte, formalisierte Definition von Microservi
 Microservices ist eine Methode zur Entwicklung von Softwareanwendungen als Umgebung von unabhängigen, voneinander einsetzbaren, modularen Diensten. Jeder Service soll so konfiguriert sein, das er als alleiniger Dienst ausgeführt werden kann, Daten unabhängig von anderen Diensten verarbeitet und nur über genau definierte Schnittstellen mit anderen Services kommuniziert.\cite{keyhole}\newline
 
 Genauer gesagt Microservice ist ein Ansatz zur Modularisierung von Software. Das heißt große Software-Systeme sollen in kleine Module unterteilt und entwickelt werden.\newline
-Dadurch soll es möglich sein Software einfacher zu erstellen, zu verstehen und weiterzuentwickeln. Des Weiteren sollen Microservices möglichst klein, unabhängig und lose gekoppelt sein. Ein Dienst wird von einem kleinen Entwicklerteam geschrieben und verwaltet. Microservices werden unabhängig von einander bereitgestellt, getestet und deployt.\newline\newline 
+Dadurch soll es möglich sein Software einfacher zu erstellen, zu verstehen und weiterzuentwickeln. Des Weiteren sollen Microservices möglichst klein, unabhängig und lose gekoppelt sein. Ein Dienst wird von einem kleinen Entwicklerteam geschrieben und verwaltet. Microservices werden unabhängig von einander bereitgestellt, getestet und deployt.\newpage 
 
 Das Konzept des Microservice verfolgt den gleichen Ansatz wie die Unix-Philosophie\cite{unixphilosophie}\newline
 \begin{description}
@@ -52,13 +52,13 @@ Das API-Gateway dient als Einstiegspunk für die Clients. Das bedeutet anstatt d
 	\item - Das API-Gateway kann weitere übergreifende Funktionen ausführen, beispielsweise Authentifizierung, Protokollierung, SSL-Terminierung und Lastenausgleich.
 \end{description}
 
-Allerdings ist das API-Gateway kein Muss bei der Implementierung einer Microserice-Architektur sondern eine Möglichkeit seine Architektur übersichtlicher zu gestalten. Gerade bei kleineren Software-Systemen kann man auf ein API-Gateway verzichten und die Kommunikation zwischen UI und Microservice über Frameworks wie zum Beispiel REST gestalten. Diese Art der Kommunikation wird auch im Kapitel \ref{ch:Fallstudie} genutzt, um zu zeigen wie solch eine Architektur in einem System funktionieren kann.\newline\newline
+Allerdings ist das API-Gateway kein Muss bei der Implementierung einer Microserice-Architektur sondern eine Möglichkeit seine Architektur übersichtlicher zu gestalten. Gerade bei kleineren Software-Systemen kann man auf ein API-Gateway verzichten und die Kommunikation zwischen UI und Microservice über Frameworks wie zum Beispiel REST gestalten. Diese Art der Kommunikation wird auch im Kapitel \ref{ch:Fallstudie} genutzt, um zu zeigen wie solch eine Architektur in einem System funktionieren kann.\newpage
 
 
 Jeder Microservice hat seine eigenes Back-End in dem die Bussines-Logic enthalten ist. Dort wird genau eine Funktionalität implementiert und es soll möglichst darauf geachtet werden das kein Service von anderen Services abhängig ist geschweige denn Funktionalitäten von anderen Services enthält. Auf dieses Problem wird noch einmal genauer in Kapitel \ref{ch:Herausforderungen} eingegangen, wie damit umzugehen ist.\newline\newline
 
 Prinzipiell hat jeder Microservices seine eigene Datenhaltungsschicht auf die nur er zugreifen kann/soll. Allerdings gibt es auch Ansätze bei denen sich mehrere Microservices eine gemeinsame Datenhaltung teilen bzw. auf mehrere Datenhaltungen zugreifen. Dieser Ansatz wird auch in \ref{ch:Fallstudie} genutzt. 
-Welche Art der Datenhaltung genutzt wird, sollte Projekt und Architekt abhängig betrachtet werden, da es bei Zugriffen von mehreren Services auf dieselbe Datenhaltung schnell zu Problemen kommen kann. Welche Probleme an dieser Stelle genau auftreten können und wie diese zu lösen sind wird genauer in \todo{(Kapitel(Daten))} beschrieben.
+Welche Art der Datenhaltung genutzt wird, sollte Projekt und Architekt abhängig betrachtet werden, da es bei Zugriffen von mehreren Services auf dieselbe Datenhaltung schnell zu Problemen kommen kann. Welche Probleme an dieser Stelle genau auftreten können und wie diese zu lösen sind wird genauer in \ref{ch:Daten} beschrieben.
 
 \section{Funktionsweise}\label{sec:funktion}
 
@@ -93,11 +93,11 @@ Die Datenhaltungsschicht beinhaltet alle benötigten Daten die das Software-Syst
 Vergleicht man nun die Architektur des Microservices mit der Architektur des Monolithen gibt es auf der einen Seite Ähnlichkeiten in Bezug auf die einzelnen Komponenten.\newline
 Man könnte sagen das jeder Microservice ein sehr kleiner Monolith sei, da jeder Microservice je nach Architektur sein eigenes User Interface besitzt. Ein eigenes Backend sowie eine eigene Datenhaltung hat. Dies steht aber im Widerspruch mit der Bedeutung eines Monolithen, bei dem es sich um eine große Einheit handelt und ein Microservice meist nur aus wenigen Funktionalitäten. Dennoch ist der Vergleich naheliegend.\newline
 Im Vergleich zu dem Monolithen liegen die einzelnen Microservices auf unterschiedlichen Servern, wodurch die Kommunikation über spezielle Schnittstellen umgesetzt wird, welche über das Internet miteinander kommunizieren. Bei einem Monolithen ist dies nicht der Fall, da die gesamten Funktionalitäten auf einem Server liegen und dadurch direkt aufgerufen werden können. Auch die Datenhaltung unterscheidet sich bei einem Microservice und dem Monolithen, da jeder Microservice meist seine eigene Datenhaltung besitzt und ein Monolith meist nur auf eine oder wenige Datenhaltungen zugreift.\newline
-Ein wesentlicher Unterschied zwischen den beiden Architektur-Stilen ist der Umgang mit Abhängigkeiten. Da jeder Microservice auf einem eigenen Server läuft und nur für einen einzige Funktionalität zuständig ist, ist es wichtig das wenige, im Idealfall, keine Abhängigkeiten zwischen Microservices entstehen, da dies zu erheblichen Problemen führen kann. Genaueres zu dieser Problematik in Kapitel (Herrausforderungen).\newline
+Ein wesentlicher Unterschied zwischen den beiden Architektur-Stilen ist der Umgang mit Abhängigkeiten. Da jeder Microservice auf einem eigenen Server läuft und nur für einen einzige Funktionalität zuständig ist, ist es wichtig das wenige, im Idealfall, keine Abhängigkeiten zwischen Microservices entstehen, da dies zu erheblichen Problemen führen kann. Genaueres zu dieser Problematik in Kapitel \ref{ch:Herausforderungen}.\newline
 Bei einem Monolithen sollte zwar auch Wert auf eine saubere Architektur gelegt werden und dadurch sehr genau auf Abhängigkeiten geachtet werden. Dennoch ist es an dieser Stelle nicht so gravierend bzw. Abhängigkeiten werden sogar benötigt. 
 Ein weiterer Unterschied ist die Aufteilung der Entwicklerteams. Bei einem Monolithen werden die Teams auf der technischen Ebene aufgeteilt. Das heißt, ein Team ist für die Datenhaltung zuständig, ein anderes Team kümmert sich um die Business-Logik und ein weiteres Team ist für die graphische Oberfläche verantwortlich.\newline
 Bei einem Microservices werden die Teams nach Fachlichkeit des Geschäftsprozesses aufgeteilt. \newline
-Hier ist ein Team zum Beispiel für die Artikelsuche eines Online-Shops zuständig. Ein weiteres für den Warenkorb und ein drittes Team für den Kaufabschluss. Dadurch ist jedes Team für einen Geschäftsprozess alleine verantwortlich und muss sich sowohl um die Nutzeroberfläche als auch um die Business-Logik und die Datenhaltung kümmern.
+Hier ist ein Team zum Beispiel für die Artikelsuche eines Online-Shops zuständig. Ein weiteres für den Warenkorb und ein drittes Team für den Kaufabschluss. Dadurch ist jedes Team für einen Geschäftsprozess alleine verantwortlich und muss sich sowohl um die Nutzeroberfläche als auch um die Business-Logik und die Datenhaltung kümmern.\newpage
 
 
 \section{Vergleich SOA}
@@ -105,7 +105,7 @@ Hier ist ein Team zum Beispiel für die Artikelsuche eines Online-Shops zuständ
 Schaut man sich die beiden Architektur-Stile Microservice und SOA an, scheinen sie auf dem ersten Blick recht identisch zu sein. Bei beiden Ansätzen steht die Aufteilung großer Systeme in kleinere Services im Vordergrund. Daher werden in der Literatur Microservices und SOA häufig als dasselbe bezeichnet, da sich beide Ansätze mit der Aufteilung von Anwendungen in Services beschäftigen. Schaut man sich die beiden Ansätze nun aber genauer an stellt man fest, das sie sich in bestimmten Punkten weit aus mehr unterscheiden als zuvor angenommen.\cite{microservices}
 
 Für Service Oriented Architecture oder kurz SOA  gibt es, wie für Microservices, keine einheitliche Definition. Dennoch gibt es zentrale Bestandteile dieser Architektur, welche große Ähnlichkeiten mit Microservices aufweisen. 
-Unter anderem besteht SOA wie Microservices aus Services welche eine Funktionalität umfassen sollen, sowie das der Service eigenständig genutzt werden kann. Des weiteren sollen die Services über das Internet und über eine geeignete Schnittstelle miteinander kommunizieren. Auch ist die Nutzung von verschiedenen Programmiersprachen sowie Frameworks bei der Entwicklung von SOA möglich.\cite{microservices}\cite{soa}\newpage
+Unter anderem besteht SOA wie Microservices aus Services welche eine Funktionalität umfassen sollen, sowie das der Service eigenständig genutzt werden kann. Des weiteren sollen die Services über das Internet und über eine geeignete Schnittstelle miteinander kommunizieren. Auch ist die Nutzung von verschiedenen Programmiersprachen sowie Frameworks bei der Entwicklung von SOA möglich.\cite{microservices}\cite{soa}
 
 \begin{figure}[bth]
     \centering
@@ -123,7 +123,7 @@ Vergleicht man nun beide Ansätze stellt man fest, das es wie schon erwähnt vie
 Beide Ansätze streben die Aufteilung von Anwendungen in Services an, sowie die Kommunikation der einzelnen Services über das Netzwerk.\newline
 Aber schon bei der Kommunikation bzw. der Integration fangen die Unterschiede an. Bei SOA funktioniert die Integration auch für Orchestrierung. An dieser Stelle wird ein Geschäftsprozess aus den einzelnen Services zusammengesetzt. Die Orchestrierung soll so eine gewisse Flexibilität in das Programm bringen. Bei Microservices hat die Integrationslösung keine eigene Intelligenz. Die einzelnen Services kommunizieren untereinander und müssen sich kennen. Microservices versuchen hingegen die Flexibilität durch einfache und schnelle Änderung sowie Ersetzung von Services zu gewährleisten.\newline
 Ein weiterer Unterschied ist die Aufteilung der Teams in Fachlichkeit und Technik.
-Bei SOA gibt es ein Team welches für die Oberfläche bzw. das Portal zuständig ist. Ein Team welches sich um die Integration \& Orchestrierung kümmert. Diese beiden Teams sind auf technische Weise aufgeteilt. Andere Teams kümmern sich um die einzelnen fachlichen Aspekte des Systems, wobei diese für eine Sammlung von Services des jeweiligen Geschäftsprozesses zuständig sind. Durch die Integration und Orchestrierung muss eine unternehmensweite Integrationslösung eingeführt werden, da es gerade bei dem Zugriff auf Daten zu Problemen führen kann. Bei Microservices ist dies leichter zu handhaben, da es keine einheitliche Integrationstechnologie gibt. Die Technologie der Integration und Kommunikation ist auf den Service begrenzt. Gerade bei Datenreplikationen ist dies von Vorteil. Genaueres hierzu in \todo{(KapitelDaten)}.\newline
+Bei SOA gibt es ein Team welches für die Oberfläche bzw. das Portal zuständig ist. Ein Team welches sich um die Integration \& Orchestrierung kümmert. Diese beiden Teams sind auf technische Weise aufgeteilt. Andere Teams kümmern sich um die einzelnen fachlichen Aspekte des Systems, wobei diese für eine Sammlung von Services des jeweiligen Geschäftsprozesses zuständig sind. Durch die Integration und Orchestrierung muss eine unternehmensweite Integrationslösung eingeführt werden, da es gerade bei dem Zugriff auf Daten zu Problemen führen kann. Bei Microservices ist dies leichter zu handhaben, da es keine einheitliche Integrationstechnologie gibt. Die Technologie der Integration und Kommunikation ist auf den Service begrenzt. Gerade bei Datenreplikationen ist dies von Vorteil. Genaueres hierzu in \ref{ch:Daten}.\newline
 Auch die Kommunikation zwischen mehreren Teams ist bei SAO schwieriger als bei Microservices. Durch die Aufteilung auf technischer Ebene kann es bei Änderungen eines Service dazuführen, das Anpassungen an anderer Stelle, für die ein anderes Team verantwortlich ist, getätigt werden müssen. So muss zum Beispiel bei der Änderung eines Services auch die Oberfläche entsprechend geändert werden, wodurch das Team Service mit dem Team Portal kommunizieren muss.\cite{microservices}
 
 \chapter{Warum nutzt man Microservices?}
@@ -155,7 +155,7 @@ Continous Delivery brint Software durch einen einfachen reproduzierbaren Prozess
     \caption{Continuous-Delivery-Pipeline}
    \label{fig:cdp}
   \end{figure}
-\newpage
+
 \begin{description}
 	\item - In der Commit-Phase wird die Software kompiliert, die Unit-Tests werden durchgeführt und es wird gegebenenfalls eine statische Code-Analyse durchgeführt.
 	\item - Die automatisierten Akzeptanztests in der nächsten Phase stellen sicher, dass die Software fachlich korrekt ist, sodass sie vom Kunden akzeptiert wird.
@@ -163,7 +163,7 @@ Continous Delivery brint Software durch einen einfachen reproduzierbaren Prozess
 	\item - Die explorativen Tests hingegen sind manuell und dienen dazu, bestimmte Bereiche des Systems zu testen. Dazu können neue Features zählen oder bestimmte Aspekte wie die Sicherheit des Systems.
 	\item - Zum Schluss wird die Software in Produktion gebracht. Auch dieser Prozess ist idealerweise automatisiert.
 \end{description}
-
+\newpage
 Die Software durchläuft jede einzelne Phase der CDP. Nach jeder erfolgreich abgeschlossenen Phase wird sie in der nächsten Phase weiter getestet. An dieser Stelle kann es passieren, dass die Software eine Phase erfolgreich abschließt, dann aber in der nächsten Phase nicht akzeptiert wird, weil zum Beispiel die Laufzeit zu lange dauert.\newline
 Gerade hier liegt der Vorteil bei einer Microservice-Architektur. Microservices sind eigenständige Deployment-Einheiten. Daher können sie unabhängig von anderen Services getestet und in Produktion gebracht werden. Dies hat erhebliche Auswirkungen auf die CDP im Vergleich zum Testen von monolithischen Strukturen.
 Der Durchlauf durch die einzelnen Tests ist wesentlich schneller, da nur ein kleiner Microservices in Produktion gebracht wird. Dadurch erhält man schnell Feedback, wodurch der Fehler bzw. das Problem behoben werden kann und sofort wieder getestet wird. Dadurch wird eine Menge zeit gespart. Denn wenn der Entwickler erst nach mehreren Tagen oder Wochen erfährt das sein Code fehlerhaft ist, ist es schwieriger sich wieder in den Code einzuarbeiten und den Fehler zu beheben.\newline

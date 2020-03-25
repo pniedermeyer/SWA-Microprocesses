@@ -13,6 +13,7 @@ export default function Signin(props:any){
               className={props.props.classes.TextField} 
               id="standard-basic" 
               label="Username" 
+              onChange={(e)=>props.setState({...props.state, logIn:{...props.state.logIn, name:e.currentTarget.value}})}
               fullWidth/>
 
             <TextField 
@@ -22,6 +23,7 @@ export default function Signin(props:any){
               style={{ display: "inline-block"}}
               fullWidth
               type="password"
+              onChange={(e)=>props.setState({...props.state, logIn:{...props.state.logIn, pwd:e.currentTarget.value}})}
               />
 
             <Link href="#" 

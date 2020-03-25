@@ -13,6 +13,7 @@ export default function Signup(props:any){
               className={props.props.classes.TextField} 
               id="standard-basic" 
               label="Username" 
+              onChange={(e)=>props.setState({...props.state, SignUp:{...props.state.SignUp, name:e.currentTarget.value}})}
               fullWidth/>
 
             <TextField 
@@ -20,6 +21,7 @@ export default function Signup(props:any){
               id="standard-basic" 
               label="Password" 
               style={{ display: "inline-block"}}
+              onChange={(e)=>props.setState({...props.state, SignUp:{...props.state.SignUp, pwd:e.currentTarget.value}})}
               fullWidth
               />
 
@@ -28,6 +30,7 @@ export default function Signup(props:any){
               className={props.props.classes.TextField} 
               id="standard-basic" 
               label="E-Mail" 
+              onChange={(e)=>props.setState({...props.state, SignUp:{...props.state.SignUp, email:e.currentTarget.value}})}
               fullWidth/>
 
             <Button 

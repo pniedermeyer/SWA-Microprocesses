@@ -1,24 +1,25 @@
 import {List, ListItem, ListItemText, Divider, Button } from "@material-ui/core";
 import React from "react";
+import { getThemeProps } from "@material-ui/styles";
 
 
 export default function Data(props:any){
     return(<div>
             <List>
                 <ListItem>
-                    <ListItemText primary="Username" secondary="admin" /></ListItem>
+                    <ListItemText primary="Username" secondary= {props.state.viewData.name} /></ListItem>
                 <Divider component="li" />
                 <li></li>
                 <ListItem>
-                <ListItemText primary="Password" secondary="admin" /></ListItem>
+                  <ListItemText primary="Password" secondary={props.state.viewData.pwd} /></ListItem>
                 <Divider component="li" />
                 <li></li>
                 <ListItem>
-                <ListItemText primary="E-Mail" secondary="admin@admin.de" /></ListItem>
+                  <ListItemText primary="E-Mail" secondary={props.state.viewData.email} /></ListItem>
                 <Divider component="li" />
                 <li></li>
                 <ListItem>
-                <ListItemText primary="ID" secondary="00000042" /></ListItem>
+                  <ListItemText primary="ID" secondary={props.state.viewData.id} /></ListItem>
                 <Divider component="li" />
                 <li></li>
             </List>

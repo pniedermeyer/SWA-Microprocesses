@@ -65,29 +65,4 @@
   url          = {https://www.enzyklopaedie-der-wirtschaftsinformatik.de/wi-enzyklopaedie/lexikon/is-management/Systementwicklung/Softwarearchitektur/Architekturparadigmen/Monolithisches-IT-System},
 }
 
-@Techreport {sagas,
-    author      = {Hector Garcia-Molina, Kenneth Salem},
-    title       = {SAGAS},
-    institution = {Priceton University},
-    year        = {1987}
-}
-
-@Misc{eventual_persitence,
-  author       = {Kikhil Barthwal},
-  title        = {Implementing Event-Driven Microservices},
-  howpublished = {DevOps Con},
-  year         = {2019}
-}
-
-@Conference{soa,
-  author       = {Liang-jie Zhang},
-  title        = {S{O}{A} and {W}eb {S}ervices},
-  booktitle    = {SOA and Web Services},
-  year         = {2006},
-  month        = sep,
-  organization = {IEEE},
-  publisher    = {IEEE},
-  doi          = {10.1109/SCC.2006.94},
-}
-
 @Comment{jabref-meta: databaseType:bibtex;}

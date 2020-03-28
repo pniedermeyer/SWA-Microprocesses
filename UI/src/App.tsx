@@ -14,7 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import { createStyles, Theme, WithStyles, withStyles } from '@material-ui/core/styles';
 // import { List, ListItemText, ListItem, Divider } from '@material-ui/core';
 
-import {postLogin} from "./requests";
+import {postLogin, postSighUp, getData} from "./requests";
 import Signin from "./ViewSignin";
 import Signup from "./ViewSignup";
 import ViewData from "./ViewData";
@@ -48,7 +48,11 @@ interface Props extends WithStyles<typeof styles>{};
 // type State = Readonly<typeof initialState>;
 
 interface IState {
-  whichUI: string;
+  whichUI: string,
+  data:{name:string, email:string, pwd:string, id:string},
+  logIn:{name:string, pwd:string},
+  signUp:{name:string, pwd:string, email:string},
+  token:string
 }
 
 class App extends React.Component<Props, IState>{
@@ -56,7 +60,7 @@ class App extends React.Component<Props, IState>{
 
   constructor(props:any) {
     super(props);
-    this.state = {whichUI: '0'};
+    this.state = {whichUI: '0', data: {name: "", email:"", pwd:"", id:""}, logIn: {name:"", pwd:""}, signUp:{name:"", pwd:"", email:""}, token:""};
     this.signInButtonHandler= this.signInButtonHandler.bind(this);
     this.signInLinkHandler= this.signInLinkHandler.bind(this);
     this.signUpButtonHandler= this.signUpButtonHandler.bind(this);
@@ -65,21 +69,23 @@ class App extends React.Component<Props, IState>{
   }
 
   signInButtonHandler(){
-    this.setState({whichUI:'2'});
-
-    // let obj:any = {};
-    //   obj.name = "sdoj";
-    //   obj.password = "pomfd";
-    // postLogin(obj);
-
+    let request = postLogin(JSON.stringify(this.state.logIn))
+    if(request.token){
+      let info = getData(request.token);
+      this.setState({...this.state, whichUI:'2', token:request.token, data:info});
+    }
   }
 
   signInLinkHandler(){
-    this.setState({whichUI:'1'});
+    this.setState({...this.state, whichUI:'1'});
   }
 
   signUpButtonHandler(){
-    this.setState({whichUI:'2'});
+    let request = postLogin(JSON.stringify(this.state.signUp))
+    if(request.token){
+      let info = getData(request.token);
+      this.setState({...this.state, whichUI:'2', token:request.token, data:info});
+    }
   }
 
   viewDataButtonHandler(){
